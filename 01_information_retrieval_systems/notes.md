@@ -66,13 +66,13 @@ A "special kind of probability distribution".
 **Simplest language model**: fixed probability distribution over symbols in vocabulary. 
 
 $$
-\sum_{\sigma \in \nu} \mathcal{M}(\sigma) = 1
+\sum\_{\sigma \in \nu} \mathcal{M}(\sigma) = 1
 $$
 
 It is based on an existing text, so that:
 
 $$
-\mathcal{M}(\sigma) = \frac{\textrm{frequency}(\sigma)}{\sum_{\sigma' \in \nu} \textrm{frequency}(\sigma')}
+\mathcal{M}(\sigma) = \frac{\textrm{frequency}(\sigma)}{\sum\_{\sigma' \in \nu} \textrm{frequency}(\sigma')}
 $$
 
 "For this simple language model, we consider each term in isolation."
@@ -82,7 +82,7 @@ $$
 First-order language model (conditional probabilities which depend on the previous symbol):
 
 $$
-\mathcal{M}_1 (\sigma_2 | \sigma_1) = \frac{\textrm{frequency}(\sigma_1 \sigma_2)}{\sum_{\sigma' \in \nu} \textrm{frequency}(\sigma_1 \sigma')}
+\mathcal{M}_1 (\sigma_2 | \sigma_1) = \frac{\textrm{frequency}(\sigma_1 \sigma_2)}{\sum\_{\sigma' \in \nu} \textrm{frequency}(\sigma_1 \sigma')}
 $$
 
 It is equivalent to the zero-order model of bigrams.
@@ -90,7 +90,7 @@ It is equivalent to the zero-order model of bigrams.
 $n$-th order model (zero-order model of $(n+1)$-grams):
 
 $$
-\mathcal{M}_n (\sigma_{n+1} | \sigma_1 \dots \sigma_n) = \frac{\mathcal{M}_0(\sigma_1 \dots \sigma_{n+1})}{\sum_{\sigma' \in \nu} \mathcal{M}_0(\sigma_1 \dots \sigma_n \sigma')}
+\mathcal{M}_n (\sigma\_{n+1} | \sigma_1 \dots \sigma_n) = \frac{\mathcal{M}_0(\sigma_1 \dots \sigma\_{n+1})}{\sum\_{\sigma' \in \nu} \mathcal{M}_0(\sigma_1 \dots \sigma_n \sigma')}
 $$
 
 **Smoothing**
@@ -103,4 +103,4 @@ $$
 
 - "First-order models can be smoothed using zero-order models; second-order models can be smoothed sing first-order models; and so forth."
 
-- "[T]he zero-order model $\mathcal{M}_{S,0}$" for a small collection $S$ can be smoothed using another zero-order model, built from a larger collection $L$: $\mathcal{M}'_{S,0} = \gamma \cdot \mathcal{M}_{S,0} + (1-\gamma) \cdot \mathcal{M}_{L,0}$".
+- "[T]he zero-order model $\mathcal{M}\_{S,0}$" for a small collection $S$ can be smoothed using another zero-order model, built from a larger collection $L$: $\mathcal{M}'\_{S,0} = \gamma \cdot \mathcal{M}\_{S,0} + (1-\gamma) \cdot \mathcal{M}\_{L,0}$".
