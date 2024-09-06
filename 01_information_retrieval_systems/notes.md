@@ -104,3 +104,57 @@ $$
 - "First-order models can be smoothed using zero-order models; second-order models can be smoothed sing first-order models; and so forth."
 
 - "[T]he zero-order model $\mathcal{M}\_{S,0}$" for a small collection $S$ can be smoothed using another zero-order model, built from a larger collection $L$: $\mathcal{M}'\_{S,0} = \gamma \cdot \mathcal{M}\_{S,0} + (1-\gamma) \cdot \mathcal{M}\_{L,0}$".
+
+### Test collections
+
+**TREC** (Text REtrieval Conference)
+
+- "[A] series of experimental evaluation efforts conducted annually by the U.S. Nationa Instituteof Standards and Technology (NIST)".
+
+- Benefits:
+    - Focus on common problems with common data.
+    - Creation of reusable test collections.
+
+- Adhoc tasks: basic searches (return a ranked list off a static set of documents). Also include sets of topics and sets of relevance judgements (qrels).
+
+- Structural convention:
+    - Every TREC document are bookended by `<DOC>...</DOC>`.
+    - The document unique identifier is wrap in `<DOCNO>...</DOCNO>`. The sme identifier is used in qrels.
+
+- Typical TREC adhoc topic:
+    - title: keyword query
+    - description: "longer statement of the topic requirements, in the form of a complete sentence or question". Can be used as query by NLP serch engines.
+    - narrative: may be a full paragraph; provides additional information to specify a relevant document; mainly used by human assessors.
+
+    <img src="./imgs/trec-topic.png" width="500">
+
+### Open-source IR systems
+
+Lucene:
+- [Lucene tutorial](https://datawarrior.medium.com/building-a-search-engine-lucene-tutorial-a515e3bfb44b)
+- [Configuring Lucene](https://www.ibm.com/docs/en/control-desk/7.6.1.x?topic=configuring-lucene-search-engine)
+- [Lucene4IR](https://strathprints.strath.ac.uk/60832/1/Azzopardi_etal_ACMSF_2016_Developing_information_retrieval_evaluation_resources_using_Lucene.pdf)
+
+Indri:
+- [Lemur project](https://www.lemurproject.org/indri/)
+- [Extended paper](https://ciir.cs.umass.edu/pubfiles/ir-407.pdf)
+
+Wumpus:
+- [Homepage](http://stefan.buettcher.org/cs/wumpus/index.html)
+- [HandWiki](https://handwiki.org/wiki/Software:The_Wumpus_Search_Engine)
+
+### Further reading
+
+Journal series:
+- [ACM Transactions on Information Systems](https://dl.acm.org/journal/tois)
+- [Foundations and Trends in Information Retrieval](https://dl.acm.org/journal/trir)
+- [Information retrieval](https://dl.acm.org/journal/infre)
+- [Information Processing and Management](https://www.sciencedirect.com/journal/information-processing-and-management)
+
+Research conferences:
+- [SIGIR](https://sigir-2024.github.io/): [2024 proceedings](https://dl.acm.org/doi/proceedings/10.1145/3626772)
+- [CIKM](https://cikm2024.org/)
+- [JCDL](https://dl.acm.org/conference/jcdl)
+- [ECIR](https://www.ecir2024.org/)
+- [WSDM](https://dl.acm.org/conference/wsdm)
+- [SPIRE](http://computo.fismat.umich.mx/spire2024/)
