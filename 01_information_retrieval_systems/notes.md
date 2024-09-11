@@ -1,5 +1,9 @@
 # Information Retrieval Systems
 
+Reference: - [Büttcher, S., Clarke, C. L. A., Cormack, G. V. (2016). Information Retrieval: Implementing and Evaluating Search Engines. Reino Unido: Penguin Random House LLC.](https://www.google.com.br/books/edition/Information_Retrieval/2c3RCwAAQBAJ?hl=pt-BR&gbpv=0).
+
+## 1 Introduction
+
 Information retrieval concerns the representation, search ad manipulation of large collections of electronic text and similar human-language data.
 
 Examples:
@@ -158,3 +162,63 @@ Research conferences:
 - [ECIR](https://www.ecir2024.org/)
 - [WSDM](https://dl.acm.org/conference/wsdm)
 - [SPIRE](http://computo.fismat.umich.mx/spire2024/)
+
+## 2 Basic Techniques
+
+### Inverted indices
+
+They provide a mapping between terms and their occurences in a text collection $\mathcal C$.
+
+**Components**:
+- Dictionary: lists terms in text collection.
+- Posting lists: list of positions in which a term appears.
+
+**Methods**
+- `first(t)`: returns first position in which term `t` occurs in the collection.
+- `last(t)`: returns the position of `t`'s last occurence.
+- `next(t, current)`: returns the position of `t`'s next occurence, after `current` position.
+- `prev(t, current)`: returns the position of `t`'s last occurence, before `current` position.
+
+Practical convention:
+- `next(t,` -$\infty$ `)` = `first(t)`
+- `prev(t,` $\infty $`)` = `last(t)`
+- `next(t,` $\infty$ `)` = $\infty$
+- `prev(t,` -$\infty$ `)` = -$\infty$
+
+Sequential scan of posting list:
+
+```python
+current = -np.inf
+while current < np.inf:
+    current = next(t, current)
+    # do something with current value
+```
+
+**Definitions**:
+
+- $l\_t := $ total number of times term $t$ apears in the collection (length of posting list).
+- $l\_\mathcal C := $ length of collection, so that $\sum_{t \in \nu} l\_t = l\_{\mathcal C}$.
+
+**Phrase Search**:
+
+Phrase: list of terms enclosed in double quotes.
+
+```python
+def next_phrase(term_list, position):
+    v = position
+    for t in term_list:
+        v = next(term, v)
+
+    if v == np.inf:
+        return (np.inf, np.inf)
+    
+    u = v
+    for t in term_list[:-1][::-1]:
+        u = prev(t, u)
+    
+    if v - u == len(term_list) - 1:
+        return (u, v)
+    else:
+        return next_phrase(term_list, u)
+```
+
